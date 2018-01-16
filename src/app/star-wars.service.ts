@@ -33,4 +33,9 @@ export class StarWarsService {
       ' , new side: ' + cInfo.side);
   }
 
+  addCharacter(name, side) {
+    const newChar = {name: name, side: side};
+    this.characters.push(newChar);
+  }
+
 }
