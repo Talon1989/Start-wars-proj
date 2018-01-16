@@ -8,22 +8,21 @@ import {StarWarsService} from '../star-wars.service';
 })
 export class TabsComponent implements OnInit {
 
-  // characters = [
-  //   {name: 'Luke Skywalker', side: ''},
-  //   {name: 'Darth Vader', side: ''}
-  // ];
-
   characters = [];
   chosenList = 'all';
 
-  constructor() { }
+  starWarsService: StarWarsService;
+
+  // DEPENDENCY INJECTION
+  constructor(starWarsService: StarWarsService) {
+    this.starWarsService = starWarsService;
+  }
 
   ngOnInit() {
   }
 
   getCharacters() {
-    const starWarsService = new StarWarsService();
-    this.characters = starWarsService.getCharacters(this.chosenList);
+    this.characters = this.starWarsService.getCharacters(this.chosenList);
     return this.characters;
   }
 

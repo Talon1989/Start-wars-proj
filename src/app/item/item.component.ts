@@ -11,14 +11,17 @@ export class ItemComponent implements OnInit {
   @Input() character;
   @Output() sideAssigned = new EventEmitter<{name: string, side: string}>();
 
-  constructor() { }
+  starWarsService: StarWarsService;
+
+  // DEPENDENCY INJECTION
+  constructor(starWarsService: StarWarsService) {
+    this.starWarsService = starWarsService;
+  }
 
   ngOnInit() {
   }
 
   onAssign(side) {
-    console.log('ITEM: ' + side);
-    const starWarsService = new StarWarsService();
-    starWarsService.onSideChosen({name: this.character.name, side: side});
+    this.starWarsService.onSideChosen({name: this.character.name, side: side});
   }
 }
