@@ -1,0 +1,4 @@
+<div class="list-group">
+  <app-item *ngFor="let c of characters" [character]="c"
+    (sideAssigned)="onSideAssigned($event)"></app-item>
+</div>
