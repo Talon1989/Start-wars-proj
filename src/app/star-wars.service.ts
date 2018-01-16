@@ -34,6 +34,7 @@ export class StarWarsService {
   }
 
   addCharacter(name, side) {
+    if (this.characters.find( c => c.name === name)) { return; }
     const newChar = {name: name, side: side};
     this.characters.push(newChar);
   }
