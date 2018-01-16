@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {StarWarsService} from '../star-wars.service';
 
 @Component({
   selector: 'app-item',
@@ -16,9 +17,8 @@ export class ItemComponent implements OnInit {
   }
 
   onAssign(side) {
-    // this.character.side = side;
     console.log('ITEM: ' + side);
-    this.sideAssigned
-      .emit({name: this.character.name, side: side});
+    const starWarsService = new StarWarsService();
+    starWarsService.onSideChosen({name: this.character.name, side: side});
   }
 }
