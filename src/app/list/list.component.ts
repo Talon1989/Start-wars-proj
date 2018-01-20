@@ -21,7 +21,7 @@ export class ListComponent implements OnInit {
   ngOnInit() {
     this.activatedRoute.params.subscribe(
       (params) => {
-        this.characters = this.starWarsService.getCharacters(params.side)
+        this.characters = this.starWarsService.getCharacters(params.side);
       }
     );
   }
