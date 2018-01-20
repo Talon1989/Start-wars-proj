@@ -5,13 +5,14 @@ import {Injectable} from '@angular/core';
 @Injectable()
 export class StarWarsService {
 
-  private characters = [
-    {name: 'Luke Skywalker', side: ''},
-    {name: 'Darth Vader', side: ''}
-  ];
+  private characters = [];
   private logService: LogService;
 
   constructor(logService: LogService) {
+    this.characters = [
+      {name: 'Luke Skywalker', side: ''},
+      {name: 'Darth Vader', side: ''}
+    ]
     this.logService = logService;
   }
 
