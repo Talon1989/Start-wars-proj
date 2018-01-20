@@ -11,7 +11,12 @@ import {LogService} from './log.service';
 import { CreateCharacterComponent } from './create-character/create-character.component';
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
+import {RouterModule} from '@angular/router';
 
+const routes = [
+  {path: '', component: TabsComponent},
+  {path: 'new-character', component: CreateCharacterComponent}
+]
 
 @NgModule({
   declarations: [
@@ -24,7 +29,8 @@ import { HeaderComponent } from './header/header.component';
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    RouterModule.forRoot(routes)
   ],
   providers: [StarWarsService, LogService], // needed for di
   bootstrap: [AppComponent]
