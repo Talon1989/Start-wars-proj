@@ -1,18 +1,19 @@
 
 import {LogService} from './log.service';
 import {Injectable} from '@angular/core';
+import {Subject} from 'rxjs/Subject';
 
 @Injectable()
 export class StarWarsService {
 
-  private characters = [];
+  private characters = [
+    {name: 'Luke Skywalker', side: ''},
+    {name: 'Darth Vader', side: ''}
+  ];
   private logService: LogService;
+  charactersChanged = new Subject<void>();
 
   constructor(logService: LogService) {
-    this.characters = [
-      {name: 'Luke Skywalker', side: ''},
-      {name: 'Darth Vader', side: ''}
-    ]
     this.logService = logService;
   }
 
@@ -30,6 +31,7 @@ export class StarWarsService {
       return c.name === cInfo.name;
     });
     this.characters[pos].side = cInfo.side;
+    this.charactersChanged.next();
     this.logService.writeLog('Changed side of ' + cInfo.name +
       ' , new side: ' + cInfo.side);
   }

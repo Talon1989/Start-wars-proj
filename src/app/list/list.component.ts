@@ -12,6 +12,7 @@ export class ListComponent implements OnInit {
   characters = [];
   activatedRoute: ActivatedRoute;
   starWarsService: StarWarsService;
+  loadedSide = 'all';
 
   constructor(activatedRoute: ActivatedRoute, starWarsService: StarWarsService) {
     this.activatedRoute = activatedRoute;
@@ -22,6 +23,12 @@ export class ListComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       (params) => {
         this.characters = this.starWarsService.getCharacters(params.side);
+        this.loadedSide = params.side;
+      }
+    );
+    this.starWarsService.charactersChanged.subscribe(
+      () => {
+        this.characters = this.starWarsService.getCharacters(this.loadedSide);
       }
     );
   }
