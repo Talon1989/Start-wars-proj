@@ -12,6 +12,7 @@ import { CreateCharacterComponent } from './create-character/create-character.co
 import {FormsModule} from '@angular/forms';
 import { HeaderComponent } from './header/header.component';
 import {RouterModule} from '@angular/router';
+import {HttpModule} from '@angular/http';
 
 const routes = [
   {path: 'characters', component: TabsComponent
@@ -36,7 +37,8 @@ const routes = [
   imports: [
     BrowserModule,
     FormsModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    HttpModule
   ],
   providers: [StarWarsService, LogService], // needed for di
   bootstrap: [AppComponent]
