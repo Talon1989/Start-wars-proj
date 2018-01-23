@@ -9,8 +9,8 @@ import 'rxjs/add/operator/map';
 export class StarWarsService {
 
   private characters = [
-    {name: 'Luke Skywalker', side: ''},
-    {name: 'Darth Vader', side: ''}
+    // {name: 'Luke Skywalker', side: ''},
+    // {name: 'Darth Vader', side: ''}
   ];
   private logService: LogService;
   charactersChanged = new Subject<void>();
